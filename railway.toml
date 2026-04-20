@@ -1,0 +1,8 @@
+[build]
+builder = "nixpacks"
+buildCommand = "npm install -g pnpm@10.4.1 && pnpm install --no-frozen-lockfile && pnpm run build"
+
+[deploy]
+startCommand = "pnpm run start"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
