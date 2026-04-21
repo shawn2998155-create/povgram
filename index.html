@@ -213,6 +213,392 @@
     </section>
 
 
+    <!-- Live POV Hero Section -->
+    <section class="live-pov-section">
+        <div class="live-pov-container">
+            <div class="live-pov-header">
+                <div class="live-indicator">
+                    <span class="live-dot"></span>
+                    <span class="live-text">🔴 Live POV Right Now</span>
+                </div>
+                <p class="live-subtitle">Watch someone's perspective in real-time, powered by smart glasses</p>
+            </div>
+
+            <div class="live-video-wrapper" id="liveVideoContainer">
+                <div class="live-video-placeholder" id="liveVideoPlaceholder">
+                    <div class="placeholder-content">
+                        <div class="play-icon">▶</div>
+                        <h3>No one is live right now</h3>
+                        <p>Be the first to stream your POV from your smart glasses</p>
+                        <button class="btn btn-primary" onclick="openGoLiveModal()">🔴 Go Live from Your Glasses</button>
+                    </div>
+                </div>
+                <div id="liveVideoEmbed" style="display: none;"></div>
+            </div>
+
+            <div class="live-cta-section" id="liveCTASection" style="display: none;">
+                <button class="btn btn-primary" onclick="openGoLiveModal()">🔴 Go Live from Your Glasses</button>
+                <p>Stream from your smart glasses in 3 simple steps</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Go Live Modal -->
+    <div id="goLiveModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeGoLiveModal()">&times;</span>
+            <h2>Stream from Your Smart Glasses in 3 Steps</h2>
+            <p class="modal-subtitle">Get live on POVGRAM in seconds</p>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <p class="step-title">Open your smart glasses streaming app</p>
+                        <p class="step-desc">Launch your device's streaming software</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <p class="step-title">Start a YouTube Live stream</p>
+                        <p class="step-desc">Create a public or unlisted YouTube Live broadcast</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <p class="step-title">Paste your YouTube Live link below</p>
+                        <p class="step-desc">Copy the stream URL and paste it here</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-section">
+                <label>YouTube Live URL</label>
+                <div class="input-group">
+                    <input type="text" id="youtubeUrlInput" placeholder="https://www.youtube.com/watch?v=..." />
+                    <button class="copy-btn" onclick="pasteFromClipboard()">📋</button>
+                </div>
+                <p class="input-hint">Paste your YouTube Live stream URL here</p>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn btn-primary" onclick="submitGoLive()">Go Live on POVGRAM</button>
+                <button class="btn" onclick="closeGoLiveModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Styles for Live POV Section -->
+    <style>
+        .live-pov-section {
+            padding: 60px 5%;
+            background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+            border-bottom: 2px solid #ff7e5f;
+        }
+        
+        .live-pov-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .live-pov-header {
+            margin-bottom: 30px;
+        }
+        
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .live-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #ff0000;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .live-text {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .live-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin: 0;
+        }
+        
+        .live-video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            background: #f0f0f0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(255, 126, 95, 0.15);
+            margin-bottom: 30px;
+        }
+        
+        .live-video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        }
+        
+        .placeholder-content {
+            text-align: center;
+            color: #666;
+        }
+        
+        .play-icon {
+            font-size: 4rem;
+            color: #ff7e5f;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        
+        .placeholder-content h3 {
+            font-size: 1.8rem;
+            margin: 15px 0;
+            color: #333;
+        }
+        
+        .placeholder-content p {
+            font-size: 1rem;
+            color: #999;
+            margin-bottom: 25px;
+        }
+        
+        #liveVideoEmbed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        #liveVideoEmbed iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .live-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #ff0000;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .live-cta-section {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .live-cta-section p {
+            color: #999;
+            font-size: 0.95rem;
+            margin-top: 15px;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .close:hover {
+            color: #333;
+        }
+        
+        .modal-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .modal-subtitle {
+            color: #999;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+        
+        .steps-container {
+            margin-bottom: 30px;
+        }
+        
+        .step {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #ff7e5f;
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-title {
+            font-weight: 600;
+            color: #333;
+            margin: 0 0 5px 0;
+            font-size: 0.95rem;
+        }
+        
+        .step-desc {
+            color: #999;
+            margin: 0;
+            font-size: 0.85rem;
+        }
+        
+        .input-section {
+            margin-bottom: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .input-section label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .input-group input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: inherit;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #ff7e5f;
+            box-shadow: 0 0 0 3px rgba(255, 126, 95, 0.1);
+        }
+        
+        .copy-btn {
+            padding: 12px 15px;
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+            background: #efefef;
+        }
+        
+        .input-hint {
+            color: #ccc;
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .modal-actions .btn {
+            flex: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .live-text {
+                font-size: 1.5rem;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+            }
+            
+            .modal-content h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+
     <div class="filter-bar" id="explore">
         <button class="filter-btn active" onclick="scrollToSection('travel', this)">Travel</button>
         <button class="filter-btn" onclick="scrollToSection('nightlife', this)">Night Life</button>
@@ -338,6 +724,112 @@
             }
         }
 
+        // Live POV Functions
+        let liveStreams = [];
+        
+        function extractVideoId(url) {
+            const patterns = [
+                /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/,
+                /youtube\.com\/embed\/([^&\n?#]+)/
+            ];
+            
+            for (let pattern of patterns) {
+                const match = url.match(pattern);
+                if (match && match[1]) {
+                    return match[1];
+                }
+            }
+            return null;
+        }
+        
+        function openGoLiveModal() {
+            document.getElementById('goLiveModal').style.display = 'flex';
+        }
+        
+        function closeGoLiveModal() {
+            document.getElementById('goLiveModal').style.display = 'none';
+            document.getElementById('youtubeUrlInput').value = '';
+        }
+        
+        function pasteFromClipboard() {
+            navigator.clipboard.readText().then(text => {
+                document.getElementById('youtubeUrlInput').value = text;
+            }).catch(err => {
+                alert('Could not read clipboard');
+            });
+        }
+        
+        function submitGoLive() {
+            const url = document.getElementById('youtubeUrlInput').value.trim();
+            
+            if (!url) {
+                alert('Please paste a YouTube Live URL');
+                return;
+            }
+            
+            const videoId = extractVideoId(url);
+            if (!videoId) {
+                alert('Invalid YouTube URL. Please check and try again.');
+                return;
+            }
+            
+            const newStream = {
+                id: Date.now().toString(),
+                videoId: videoId,
+                title: 'POV Stream ' + new Date().toLocaleTimeString(),
+                timestamp: Date.now()
+            };
+            
+            liveStreams.unshift(newStream);
+            localStorage.setItem('povgram_streams', JSON.stringify(liveStreams));
+            
+            displayLiveStream(newStream);
+            closeGoLiveModal();
+            alert('🔴 You are now live on POVGRAM!');
+        }
+        
+        function displayLiveStream(stream) {
+            const container = document.getElementById('liveVideoContainer');
+            const placeholder = document.getElementById('liveVideoPlaceholder');
+            const embed = document.getElementById('liveVideoEmbed');
+            const ctaSection = document.getElementById('liveCTASection');
+            
+            placeholder.style.display = 'none';
+            ctaSection.style.display = 'block';
+            
+            embed.innerHTML = `<iframe src="https://www.youtube.com/embed/${stream.videoId}?autoplay=1&mute=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            embed.style.display = 'block';
+        }
+        
+        function loadLiveStreams() {
+            const saved = localStorage.getItem('povgram_streams');
+            if (saved) {
+                try {
+                    liveStreams = JSON.parse(saved);
+                    if (liveStreams.length > 0) {
+                        displayLiveStream(liveStreams[0]);
+                    }
+                } catch (e) {
+                    console.error('Failed to load streams:', e);
+                }
+            }
+        }
+        
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('goLiveModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Keyboard shortcut to close modal
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeGoLiveModal();
+            }
+        });
+
         // Smooth Scroll and Active Button
         function scrollToSection(id, btn) {
             const section = document.getElementById(id);
@@ -354,6 +846,7 @@
 
         // Initialize
         window.onload = () => {
+            loadLiveStreams();
             populateGrids();
         };
     </script>
