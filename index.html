@@ -133,7 +133,7 @@
         }
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
         .video-card {
@@ -605,7 +605,7 @@
         <button class="filter-btn" onclick="scrollToSection('jobs', this)">Jobs</button>
         <button class="filter-btn" onclick="scrollToSection('relaxing', this)">Relaxing</button>
         <button class="filter-btn" onclick="scrollToSection('adrenaline', this)">Adrenaline</button>
-        <button class="filter-btn" onclick="scrollToSection('lifeexperiences', this)">Life Experiences</button>
+        <button class="filter-btn" onclick="scrollToSection('concerts', this)">Concerts</button>
     </div>
 
     <section id="travel" class="category-section">
@@ -633,9 +633,9 @@
         <div class="video-grid" id="grid-adrenaline"></div>
     </section>
 
-    <section id="lifeexperiences" class="category-section">
-        <h2 class="section-title">❤️ Life Experiences</h2>
-        <div class="video-grid" id="grid-lifeexperiences"></div>
+    <section id="concerts" class="category-section">
+        <h2 class="section-title">❤️ Concerts</h2>
+        <div class="video-grid" id="grid-concerts"></div>
     </section>
 
     <section id="submit" class="submit-section">
@@ -654,33 +654,49 @@
                 { id: '2y2Z06hVmWE', title: 'POV: Walking in Tokyo at Night' },
                 { id: 'Bq4rmeIvJbs', title: 'POV: Exploring Swiss Alps' },
                 { id: 'riZWEoGKyuU', title: 'POV: Venice Canal Boat Ride' },
-                { id: '6BPuGeS6O4w', title: 'POV: Walking in Paris' }
-                
+                { id: '6BPuGeS6O4w', title: 'POV: Walking in Paris' },
+                { id: 'x2fMvRF6H-8', title: 'POV: Additional Video' },
+                { id: 'x2fMvRF6H-8', title: 'POV: Additional Video' }
             ],
             nightlife: [
                 { id: 'GX-0C1Z_YdM', title: 'POV: Walking in Pattaya' },
                 { id: 'oib4qGPy5r0', title: 'POV: Seoul Night Market' },
-                { id: 'fR22wuArNQY', title: 'POV: New York Times Square at Night' }                
+                { id: 'fR22wuArNQY', title: 'POV: New York Times Square at Night' },
+                { id: 'x2fMvRF6H-8', title: 'POV: Additional Video' },
+                { id: 'x2fMvRF6H-8', title: 'POV: Additional Video' },
+                { id: 'x2fMvRF6H-8', title: 'POV: Additional Video' }
             ],
             jobs: [
                 { id: '4VtHiSE-w3M', title: 'POV: Pilot Landing' },
                 { id: 'ImGzlm6hEyg', title: 'POV: Surgeon' },
-                { id: '2vZa_icbC34', title: 'POV: Carpenter' }
+                { id: '2vZa_icbC34', title: 'POV: Carpenter' },
+                { id: 'x2fMvRF6H-8', title: 'POV: Additional Video' },
+                { id: 'x2fMvRF6H-8', title: 'POV: Additional Video' },
+                { id: 'x2fMvRF6H-8', title: 'POV: Additional Video' }
             ],
             relaxing: [
                 { id: 'n6Y5Rqy3HQY', title: 'POV: Beach' },
                 { id: 'JkErW9Y5g-k', title: 'POV: Rainforest Walk' },
-                { id: '1v8mDF57WYs', title: 'POV: Walking in Rain' }
+                { id: '1v8mDF57WYs', title: 'POV: Walking in Rain' },
+                { id: 'PyFN_FYwqvc', title: 'POV: Canadian Forest' },
+                { id: 'x2fMvRF6H-8', title: 'POV: Additional Video' },
+                { id: 'x2fMvRF6H-8', title: 'POV: Additional Video' }
             ],
             adrenaline: [
                 { id: 'Kch9b87QgX0', title: 'POV: Wingsuit Skydiving' },
                 { id: 'OIq5EsDudQs', title: 'POV: Downhill Biking' },
-                { id: '4fEPDC9rfKM', title: 'POV: Formula 1 Cockpit' }
+                { id: '4fEPDC9rfKM', title: 'POV: Formula 1 Cockpit' },
+                { id: 'A2NO7BWFt8M', title: 'POV: Motorcycle Race' },
+                { id: 'x2fMvRF6H-8', title: 'POV: Additional Video' },
+                { id: 'x2fMvRF6H-8', title: 'POV: Additional Video' }
             ],
-            lifeexperiences: [
-                { id: 'Bq4rmeIvJbs', title: 'POV: Playing with Child' },
-                { id: 'Bq4rmeIvJbs', title: 'POV: Birthday Celebration' },
-                { id: 'Bq4rmeIvJbs', title: 'POV: Family Dinner' }
+            concerts: [
+                { id: '7Vng73CupM0', title: 'POV: BLACKPINK Coachella' },
+                { id: 'vhdLALFxQiE', title: 'POV: BIEBERCHELLA 2026' },
+                { id: 'SBTYRrsUWgA', title: 'POV: JABBAWOCKEEZ' },
+                { id: 'l_S_XsSwtI4', title: 'POV: Bruno Mars' },
+                { id: 'x2fMvRF6H-8', title: 'POV: Additional Video' },
+                { id: 'x2fMvRF6H-8', title: 'POV: Additional Video' }
             ]
         };
 
