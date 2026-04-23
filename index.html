@@ -3,9 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POVGRAM — See What They See</title>
+<title>POVGRAM — See What They See | First-Person Storytelling Platform</title>
+
+<!-- SEO -->
+<meta name="description" content="POVGRAM is the first-person storytelling platform. Share immersive experiences from your own eyes. Build an audience. Get paid. Join the waitlist — free forever.">
+<meta name="keywords" content="first person storytelling, POV stories, creator platform, immersive content, narrative platform, creator economy">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://povgram.com">
+
+<!-- Open Graph (Facebook, LinkedIn sharing) -->
+<meta property="og:title" content="POVGRAM — See What They See">
+<meta property="og:description" content="The world's first first-person storytelling platform. Share your POV. Build your audience. Get paid.">
+<meta property="og:url" content="https://povgram.com">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://povgram.com/og-image.jpg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="POVGRAM — See What They See">
+<meta name="twitter:description" content="The world's first first-person storytelling platform. Share your POV. Build your audience. Get paid.">
+<meta name="twitter:image" content="https://povgram.com/og-image.jpg">
+
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --ink: #0b0b0f;
@@ -13,190 +35,225 @@
   --fire: #e8421c;
   --gold: #c9a84c;
   --fog: #8a8680;
-  --glass: rgba(240,237,230,.04);
   --line: rgba(240,237,230,.08);
+  --glass: rgba(240,237,230,.04);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{background:var(--ink);color:var(--paper);font-family:'Syne',sans-serif;overflow-x:hidden;cursor:none;}
 
+/* CURSOR */
 #dot{width:8px;height:8px;background:var(--fire);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);}
 #ring{width:32px;height:32px;border:1px solid rgba(232,66,28,.4);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s;}
 
+/* GRAIN */
 .grain{position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;animation:grainshift 1s steps(2) infinite;}
 @keyframes grainshift{0%{background-position:0 0}50%{background-position:50px 25px}100%{background-position:-25px 50px}}
 
-nav{position:fixed;inset:0 0 auto 0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 4rem;}
-nav::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,11,15,.92) 0%,transparent 100%);z-index:-1;pointer-events:none;}
+/* WAITLIST COUNTER BANNER */
+.banner{background:var(--fire);padding:.6rem 2rem;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--paper);position:relative;z-index:300;}
+.banner strong{color:var(--paper);font-weight:700;}
+
+/* NAV */
+nav{position:fixed;inset:0 0 auto 0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 4rem;top:32px;}
+nav::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,11,15,.95) 0%,transparent 100%);z-index:-1;pointer-events:none;}
 .wordmark{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:.2em;text-transform:uppercase;color:var(--paper);text-decoration:none;display:flex;align-items:center;gap:.5rem;}
-.wdot{width:7px;height:7px;background:var(--fire);border-radius:50%;animation:pulse 2s ease-in-out infinite;}
+.wdot{width:7px;height:7px;background:var(--fire);border-radius:50%;animation:pulse 2s ease-in-out infinite;flex-shrink:0;}
 @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.6}}
-.nav-right{display:flex;align-items:center;gap:3rem;}
-.nav-link{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--fog);text-decoration:none;transition:color .2s;}
+.nav-right{display:flex;align-items:center;gap:2.5rem;}
+.nav-link{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--fog);text-decoration:none;transition:color .2s;}
 .nav-link:hover{color:var(--paper);}
-.nav-pill{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);background:var(--fire);border:none;padding:.55rem 1.4rem;cursor:none;transition:background .2s,transform .15s;text-decoration:none;}
-.nav-pill:hover{background:#c83516;transform:translateY(-1px);}
+.nav-pill{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);background:var(--fire);padding:.5rem 1.3rem;cursor:none;transition:background .2s;text-decoration:none;}
+.nav-pill:hover{background:#c83516;}
 
 /* HERO */
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 4rem;gap:4rem;position:relative;overflow:hidden;}
-.hero-left{padding-top:5rem;}
+.hero-left{padding-top:7rem;}
 .kicker{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--fire);display:flex;align-items:center;gap:.8rem;margin-bottom:2rem;opacity:0;animation:riseIn .7s ease forwards .2s;}
 .kicker-line{width:28px;height:1px;background:var(--fire);}
-.hero-h1{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(3.8rem,6.5vw,6.5rem);line-height:.95;letter-spacing:-.02em;margin-bottom:.8rem;opacity:0;animation:riseIn .8s ease forwards .35s;}
-.hero-h1 em{font-style:normal;font-family:'Syne',sans-serif;font-weight:800;color:var(--fire);font-size:1.1em;}
-.hero-sub{font-family:'Syne',sans-serif;font-weight:400;font-size:clamp(2rem,3.2vw,3.5rem);color:rgba(240,237,230,.2);line-height:1;letter-spacing:-.01em;margin-bottom:2.5rem;opacity:0;animation:riseIn .8s ease forwards .45s;}
-.hero-body{font-size:1rem;line-height:1.78;color:rgba(240,237,230,.52);max-width:440px;margin-bottom:3rem;opacity:0;animation:riseIn .8s ease forwards .6s;}
+.hero-h1{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(3.8rem,6vw,6.5rem);line-height:.95;letter-spacing:-.02em;margin-bottom:.8rem;opacity:0;animation:riseIn .8s ease forwards .35s;}
+.hero-h1 em{font-style:normal;font-family:'Syne',sans-serif;font-weight:800;color:var(--fire);}
+.hero-sub{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3vw,3.2rem);color:rgba(240,237,230,.18);line-height:1;margin-bottom:2rem;opacity:0;animation:riseIn .8s ease forwards .45s;}
+.hero-body{font-size:1rem;line-height:1.78;color:rgba(240,237,230,.52);max-width:440px;margin-bottom:2.5rem;opacity:0;animation:riseIn .8s ease forwards .6s;}
 .hero-body strong{color:var(--paper);font-weight:500;}
-.hero-actions{display:flex;align-items:center;gap:2rem;opacity:0;animation:riseIn .8s ease forwards .75s;}
-.btn-main{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);background:var(--fire);text-decoration:none;padding:1rem 2.2rem;display:inline-flex;align-items:center;gap:.7rem;transition:all .2s;}
-.btn-main::after{content:'→';transition:transform .2s;}
-.btn-main:hover{background:#c83516;transform:translateY(-2px);}
-.btn-main:hover::after{transform:translateX(4px);}
-.btn-text{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--fog);text-decoration:none;border-bottom:1px solid rgba(138,134,128,.3);padding-bottom:2px;transition:color .2s,border-color .2s;}
-.btn-text:hover{color:var(--paper);border-color:var(--paper);}
+
+/* HERO SIGNUP FORM — the main conversion point */
+.hero-form-wrap{opacity:0;animation:riseIn .8s ease forwards .72s;}
+.hero-form-label{font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--fog);margin-bottom:.8rem;}
+.hero-form-label strong{color:var(--fire);}
+.hero-form{display:flex;max-width:440px;margin-bottom:.8rem;}
+.hero-in{flex:1;background:rgba(240,237,230,.06);border:1px solid rgba(240,237,230,.14);border-right:none;color:var(--paper);font-family:'Syne',sans-serif;font-size:.9rem;padding:.9rem 1.2rem;outline:none;transition:border-color .2s;}
+.hero-in::placeholder{color:var(--fog);}
+.hero-in:focus{border-color:rgba(232,66,28,.5);}
+.hero-btn{background:var(--fire);border:1px solid var(--fire);color:var(--paper);font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;padding:.9rem 1.5rem;cursor:none;transition:background .2s;white-space:nowrap;}
+.hero-btn:hover{background:#c83516;}
+.hero-form-note{font-family:'IBM Plex Mono',monospace;font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(138,134,128,.5);}
+
+/* SOCIAL PROOF MICRO */
+.social-micro{display:flex;align-items:center;gap:1rem;margin-top:2rem;opacity:0;animation:riseIn .8s ease forwards .85s;}
+.avatars{display:flex;}
+.av{width:28px;height:28px;border-radius:50%;border:2px solid var(--ink);margin-right:-8px;font-size:.65rem;display:flex;align-items:center;justify-content:center;}
+.micro-text{font-size:.78rem;color:rgba(240,237,230,.45);line-height:1.4;}
+.micro-text strong{color:var(--paper);}
 
 /* VIEWFINDER */
-.hero-right{display:flex;justify-content:center;align-items:center;padding-top:5rem;opacity:0;animation:riseIn 1s ease forwards .5s;}
-.viewfinder{width:100%;max-width:440px;aspect-ratio:9/16;border:1px solid var(--line);position:relative;overflow:hidden;background:#050508;}
-.vfc{position:absolute;width:22px;height:22px;border-color:var(--fire);border-style:solid;border-width:0;}
+.hero-right{display:flex;justify-content:center;align-items:center;padding-top:7rem;opacity:0;animation:riseIn 1s ease forwards .5s;}
+.viewfinder{width:100%;max-width:400px;aspect-ratio:9/16;border:1px solid var(--line);position:relative;overflow:hidden;background:#050508;}
+.vfc{position:absolute;width:20px;height:20px;border-color:var(--fire);border-style:solid;border-width:0;}
 .vfc.tl{top:12px;left:12px;border-top-width:2px;border-left-width:2px;}
 .vfc.tr{top:12px;right:12px;border-top-width:2px;border-right-width:2px;}
 .vfc.bl{bottom:12px;left:12px;border-bottom-width:2px;border-left-width:2px;}
 .vfc.br{bottom:12px;right:12px;border-bottom-width:2px;border-right-width:2px;}
-.vf-scan{position:absolute;left:0;right:0;height:1px;background:rgba(232,66,28,.25);animation:scan 4s linear infinite;}
+.vf-scan{position:absolute;left:0;right:0;height:1px;background:rgba(232,66,28,.22);animation:scan 4s linear infinite;}
 @keyframes scan{0%{top:0;opacity:.8}100%{top:100%;opacity:0}}
-.rec{position:absolute;top:1.2rem;right:1.4rem;display:flex;align-items:center;gap:.4rem;font-family:'IBM Plex Mono',monospace;font-size:.54rem;letter-spacing:.15em;color:var(--fire);}
+.rec{position:absolute;top:1.1rem;right:1.3rem;display:flex;align-items:center;gap:.4rem;font-family:'IBM Plex Mono',monospace;font-size:.52rem;letter-spacing:.15em;color:var(--fire);}
 .rec-b{width:6px;height:6px;background:var(--fire);border-radius:50%;animation:blink .9s step-end infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.vf-caption{position:absolute;bottom:2.5rem;left:1.4rem;right:1.4rem;}
-.vf-meta{font-family:'IBM Plex Mono',monospace;font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,237,230,.45);}
-.vf-title{font-family:'Instrument Serif',serif;font-style:italic;font-size:1.05rem;color:var(--paper);margin:.4rem 0 .6rem;line-height:1.3;}
-.vf-stats{font-family:'IBM Plex Mono',monospace;font-size:.52rem;color:rgba(240,237,230,.35);display:flex;gap:1rem;}
-.vf-stats span{color:var(--fire);}
+
+/* rotating stories in viewfinder */
+.vf-stories{position:absolute;bottom:2.5rem;left:1.3rem;right:1.3rem;}
+.vf-story{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;}
+.vf-story.active{opacity:1;}
+.vf-meta{font-family:'IBM Plex Mono',monospace;font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,237,230,.45);}
+.vf-title{font-family:'Instrument Serif',serif;font-style:italic;font-size:1rem;color:var(--paper);margin:.4rem 0 .6rem;line-height:1.35;}
+.vf-stats{font-family:'IBM Plex Mono',monospace;font-size:.5rem;color:rgba(240,237,230,.3);display:flex;gap:1rem;}
+.vf-stats em{color:var(--fire);font-style:normal;}
 
 /* NUMBAR */
 .numbar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.nb-item{padding:2.5rem 4rem;border-right:1px solid var(--line);}
+.nb-item{padding:2rem 4rem;border-right:1px solid var(--line);}
 .nb-item:last-child{border-right:none;}
-.nb-n{font-family:'Instrument Serif',serif;font-style:italic;font-size:3rem;color:var(--paper);line-height:1;margin-bottom:.3rem;}
-.nb-n strong{font-family:'Syne',sans-serif;font-style:normal;font-size:.85em;color:var(--fire);}
-.nb-l{font-family:'IBM Plex Mono',monospace;font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--fog);}
+.nb-n{font-family:'Instrument Serif',serif;font-style:italic;font-size:2.8rem;color:var(--paper);line-height:1;margin-bottom:.25rem;}
+.nb-n strong{font-family:'Syne',sans-serif;font-style:normal;font-size:.8em;color:var(--fire);}
+.nb-l{font-family:'IBM Plex Mono',monospace;font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:var(--fog);}
 
-/* WHAT */
-.what-section{padding:8rem 4rem;display:grid;grid-template-columns:5fr 7fr;gap:8rem;align-items:start;border-bottom:1px solid var(--line);}
-.sticky-label{position:sticky;top:6rem;}
+/* SECTIONS */
 .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--fire);margin-bottom:1.5rem;display:flex;align-items:center;gap:.7rem;}
 .eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--fire);}
-.sec-h2{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(2.2rem,3.5vw,3.5rem);line-height:1.05;letter-spacing:-.01em;}
-.what-right{padding-top:.5rem;}
-.what-p{font-size:1rem;line-height:1.8;color:rgba(240,237,230,.55);margin-bottom:2rem;}
-.what-p strong{color:var(--paper);font-weight:500;}
-.pills{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.5rem;}
-.pill{font-family:'IBM Plex Mono',monospace;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--fog);border:1px solid var(--line);padding:.38rem .85rem;transition:all .2s;cursor:none;}
-.pill:hover{color:var(--paper);border-color:rgba(240,237,230,.22);}
-.pill.on{color:var(--fire);border-color:rgba(232,66,28,.35);background:rgba(232,66,28,.06);}
+.sec-h2{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(2rem,3.5vw,3.3rem);line-height:1.05;letter-spacing:-.01em;}
 
 /* HOW */
-.how-section{padding:8rem 4rem;border-bottom:1px solid var(--line);background:rgba(232,66,28,.015);}
-.how-hdr{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:5rem;}
+.how-section{padding:7rem 4rem;border-bottom:1px solid var(--line);background:rgba(232,66,28,.015);}
+.how-hdr{margin-bottom:4rem;}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);}
-.step{background:var(--ink);padding:3rem;position:relative;transition:background .3s;}
+.step{background:var(--ink);padding:2.5rem;position:relative;transition:background .3s;}
 .step:hover{background:rgba(232,66,28,.04);}
-.step-n{font-family:'Instrument Serif',serif;font-style:italic;font-size:4.5rem;color:rgba(240,237,230,.04);line-height:1;position:absolute;top:2rem;right:2.5rem;pointer-events:none;}
-.step-ico{width:44px;height:44px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:2rem;transition:border-color .3s;}
+.step-n{font-family:'Instrument Serif',serif;font-style:italic;font-size:4rem;color:rgba(240,237,230,.04);line-height:1;position:absolute;top:1.5rem;right:2rem;pointer-events:none;}
+.step-ico{width:40px;height:40px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:1.8rem;transition:border-color .3s;}
 .step:hover .step-ico{border-color:rgba(232,66,28,.4);}
-.step-t{font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;margin-bottom:.8rem;letter-spacing:-.01em;}
-.step-d{font-size:.86rem;line-height:1.72;color:rgba(240,237,230,.42);}
+.step-t{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:.7rem;}
+.step-d{font-size:.85rem;line-height:1.72;color:rgba(240,237,230,.42);}
+
+/* TRACTION SECTION — viral referral */
+.traction-section{padding:7rem 4rem;border-bottom:1px solid var(--line);}
+.traction-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;margin-top:4rem;}
+.traction-left{}
+.traction-p{font-size:1rem;line-height:1.8;color:rgba(240,237,230,.55);margin-bottom:1.5rem;}
+.traction-p strong{color:var(--paper);}
+.share-box{background:#0f0f13;border:1px solid var(--line);padding:1.8rem;margin-top:2rem;}
+.share-box-title{font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--fog);margin-bottom:1rem;}
+.share-url{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--fire);background:rgba(232,66,28,.08);border:1px solid rgba(232,66,28,.2);padding:.6rem 1rem;margin-bottom:1rem;display:block;letter-spacing:.05em;}
+.share-btns{display:flex;gap:.6rem;flex-wrap:wrap;}
+.share-btn{font-family:'IBM Plex Mono',monospace;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper);background:transparent;border:1px solid var(--line);padding:.45rem .9rem;cursor:none;transition:all .2s;text-decoration:none;display:inline-block;}
+.share-btn:hover{border-color:var(--fire);color:var(--fire);}
+.share-btn.tw{border-color:rgba(29,161,242,.3);}
+.share-btn.tw:hover{border-color:#1da1f2;color:#1da1f2;}
+.share-btn.rd{border-color:rgba(255,69,0,.3);}
+.share-btn.rd:hover{border-color:#ff4500;color:#ff4500;}
+.share-btn.li{border-color:rgba(0,119,181,.3);}
+.share-btn.li:hover{border-color:#0077b5;color:#0077b5;}
+
+.traction-right{}
+.niche-cards{display:flex;flex-direction:column;gap:1px;background:var(--line);}
+.niche-card{background:var(--ink);padding:1.4rem 1.8rem;display:flex;align-items:center;justify-content:space-between;transition:background .25s;cursor:none;}
+.niche-card:hover{background:rgba(232,66,28,.04);}
+.niche-left{display:flex;align-items:center;gap:1rem;}
+.niche-ico{font-size:1.2rem;}
+.niche-name{font-family:'Syne',sans-serif;font-weight:600;font-size:.9rem;}
+.niche-sub{font-family:'IBM Plex Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fog);margin-top:.15rem;}
+.niche-count{font-family:'Instrument Serif',serif;font-style:italic;font-size:1.4rem;color:var(--fire);}
+
+/* WHAT */
+.what-section{padding:7rem 4rem;display:grid;grid-template-columns:5fr 7fr;gap:7rem;align-items:start;border-bottom:1px solid var(--line);}
+.sticky-label{position:sticky;top:7rem;}
+.what-p{font-size:1rem;line-height:1.8;color:rgba(240,237,230,.55);margin-bottom:2rem;}
+.what-p strong{color:var(--paper);}
+.pills{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.5rem;}
+.pill{font-family:'IBM Plex Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--fog);border:1px solid var(--line);padding:.38rem .85rem;transition:all .2s;cursor:none;}
+.pill:hover{color:var(--paper);border-color:rgba(240,237,230,.2);}
+.pill.on{color:var(--fire);border-color:rgba(232,66,28,.35);background:rgba(232,66,28,.06);}
 
 /* EARN */
-.earn-section{padding:8rem 4rem;border-bottom:1px solid var(--line);}
-.earn-hdr{margin-bottom:5rem;}
+.earn-section{padding:7rem 4rem;border-bottom:1px solid var(--line);}
+.earn-hdr{margin-bottom:4rem;}
 .mgrid{display:grid;gap:1px;background:var(--line);}
-.mgrid-2{grid-template-columns:1fr 1fr;}
-.mgrid-3{grid-template-columns:1fr 1fr 1fr;}
-.mc{background:var(--ink);padding:2.5rem;position:relative;overflow:hidden;transition:background .3s;}
+.mg2{grid-template-columns:1fr 1fr;}
+.mg3{grid-template-columns:1fr 1fr 1fr;}
+.mc{background:var(--ink);padding:2.2rem;position:relative;overflow:hidden;transition:background .3s;}
 .mc:hover{background:rgba(232,66,28,.03);}
 .mc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--fire);transform:scaleX(0);transform-origin:left;transition:transform .4s ease;}
 .mc:hover::before{transform:scaleX(1);}
-.mc-ico{font-size:1.8rem;margin-bottom:1.4rem;}
-.mc-t{font-family:'Syne',sans-serif;font-weight:700;font-size:1.12rem;margin-bottom:.6rem;letter-spacing:-.01em;}
-.mc-d{font-size:.84rem;line-height:1.72;color:rgba(240,237,230,.44);margin-bottom:1.5rem;}
-.mc-tag{font-family:'IBM Plex Mono',monospace;font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);padding:.28rem .65rem;display:inline-block;}
-
-/* PRICING */
-.pricing-section{padding:8rem 4rem;border-bottom:1px solid var(--line);background:rgba(255,255,255,.01);}
-.pricing-hdr{text-align:center;margin-bottom:5rem;}
-.pricing-hdr .eyebrow{justify-content:center;}
-.pricing-hdr .eyebrow::before{display:none;}
-.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);max-width:960px;margin:0 auto;}
-.pc{background:var(--ink);padding:3rem 2.5rem;position:relative;display:flex;flex-direction:column;}
-.pc.hot{background:var(--fire);}
-.pc.hot .pc-name,.pc.hot .pc-amt,.pc.hot .pc-per,.pc.hot .pc-feat,.pc.hot .pc-badge{color:var(--paper)!important;}
-.pc.hot .pc-feat::before{color:rgba(240,237,230,.8)!important;}
-.pc.hot .pc-divider{border-color:rgba(240,237,230,.2)!important;}
-.pc.hot .pc-btn{background:var(--ink);color:var(--paper);border-color:var(--ink);}
-.pc.hot .pc-btn:hover{background:#080810;}
-.pc-badge{font-family:'IBM Plex Mono',monospace;font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--fire);border:1px solid rgba(232,66,28,.3);background:rgba(232,66,28,.08);display:inline-block;padding:.2rem .6rem;margin-bottom:1.5rem;width:fit-content;}
-.pc-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fog);margin-bottom:1.2rem;}
-.pc-amt{font-family:'Instrument Serif',serif;font-style:italic;font-size:3.4rem;line-height:1;color:var(--paper);margin-bottom:.3rem;}
-.pc-amt sup{font-size:1.4rem;vertical-align:top;margin-top:.6rem;display:inline-block;font-style:normal;}
-.pc-per{font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:var(--fog);margin-bottom:2rem;padding-bottom:2rem;}
-.pc-divider{border-top:1px solid var(--line);}
-.pc-feats{list-style:none;display:flex;flex-direction:column;gap:.72rem;flex:1;margin:2rem 0;}
-.pc-feat{font-size:.84rem;color:rgba(240,237,230,.58);display:flex;align-items:center;gap:.65rem;line-height:1.4;}
-.pc-feat::before{content:'—';color:var(--fire);flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:.65rem;}
-.pc-btn{display:block;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:.9rem;border:1px solid var(--line);color:var(--paper);transition:all .2s;cursor:none;margin-top:auto;}
-.pc-btn:hover{border-color:var(--fire);color:var(--fire);}
+.mc-ico{font-size:1.6rem;margin-bottom:1.2rem;}
+.mc-t{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:.5rem;}
+.mc-d{font-size:.83rem;line-height:1.72;color:rgba(240,237,230,.44);margin-bottom:1.3rem;}
+.mc-tag{font-family:'IBM Plex Mono',monospace;font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);padding:.25rem .6rem;display:inline-block;}
 
 /* TICKER */
 .social-section{padding:5rem 0;border-bottom:1px solid var(--line);overflow:hidden;}
-.social-lbl{font-family:'IBM Plex Mono',monospace;font-size:.56rem;letter-spacing:.25em;text-transform:uppercase;color:var(--fog);text-align:center;margin-bottom:3rem;}
-.ticker-wrap{display:flex;gap:1px;animation:slide 35s linear infinite;width:max-content;}
+.social-lbl{font-family:'IBM Plex Mono',monospace;font-size:.54rem;letter-spacing:.25em;text-transform:uppercase;color:var(--fog);text-align:center;margin-bottom:3rem;}
+.ticker-wrap{display:flex;gap:1px;animation:slide 38s linear infinite;width:max-content;}
 .ticker-wrap:hover{animation-play-state:paused;}
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.tcard{background:#0f0f13;padding:1.8rem 2.2rem;width:310px;flex-shrink:0;border:1px solid var(--line);transition:border-color .2s;}
+.tcard{background:#0f0f13;padding:1.6rem 2rem;width:300px;flex-shrink:0;border:1px solid var(--line);transition:border-color .2s;}
 .tcard:hover{border-color:rgba(232,66,28,.3);}
-.tcard-q{font-family:'Instrument Serif',serif;font-style:italic;font-size:.92rem;line-height:1.65;color:rgba(240,237,230,.62);margin-bottom:1.2rem;}
-.tcard-w{font-family:'IBM Plex Mono',monospace;font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;color:var(--fog);}
+.tcard-q{font-family:'Instrument Serif',serif;font-style:italic;font-size:.9rem;line-height:1.65;color:rgba(240,237,230,.62);margin-bottom:1rem;}
+.tcard-w{font-family:'IBM Plex Mono',monospace;font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--fog);}
 .tcard-w em{color:var(--fire);font-style:normal;}
 
-/* CTA */
-.cta-section{padding:10rem 4rem;text-align:center;position:relative;overflow:hidden;}
-.cta-ring{position:absolute;border-radius:50%;border:1px solid rgba(232,66,28,.05);top:50%;left:50%;transform:translate(-50%,-50%);}
-.cta-h2{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(3rem,6vw,6rem);line-height:.95;letter-spacing:-.02em;margin-bottom:1.5rem;position:relative;}
-.cta-sub{font-size:.98rem;color:rgba(240,237,230,.42);max-width:400px;margin:0 auto 3.5rem;line-height:1.75;}
-.cta-form{display:flex;max-width:440px;margin:0 auto 1.5rem;position:relative;}
-.cta-in{flex:1;background:rgba(240,237,230,.05);border:1px solid var(--line);border-right:none;color:var(--paper);font-family:'Syne',sans-serif;font-size:.9rem;padding:1rem 1.4rem;outline:none;transition:border-color .2s;}
+/* BOTTOM CTA */
+.cta-section{padding:9rem 4rem;text-align:center;position:relative;overflow:hidden;}
+.cta-ring{position:absolute;border-radius:50%;border:1px solid rgba(232,66,28,.05);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.cta-h2{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(2.8rem,5.5vw,5.5rem);line-height:.95;letter-spacing:-.02em;margin-bottom:1.5rem;position:relative;}
+.cta-sub{font-size:.95rem;color:rgba(240,237,230,.42);max-width:380px;margin:0 auto 3rem;line-height:1.75;}
+.cta-form{display:flex;max-width:420px;margin:0 auto .9rem;}
+.cta-in{flex:1;background:rgba(240,237,230,.05);border:1px solid var(--line);border-right:none;color:var(--paper);font-family:'Syne',sans-serif;font-size:.88rem;padding:.95rem 1.3rem;outline:none;transition:border-color .2s;}
 .cta-in::placeholder{color:var(--fog);}
 .cta-in:focus{border-color:rgba(232,66,28,.45);}
-.cta-btn{background:var(--fire);border:1px solid var(--fire);color:var(--paper);font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:1rem 1.5rem;cursor:none;transition:background .2s;white-space:nowrap;}
+.cta-btn{background:var(--fire);border:1px solid var(--fire);color:var(--paper);font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:.95rem 1.4rem;cursor:none;transition:background .2s;white-space:nowrap;}
 .cta-btn:hover{background:#c83516;}
-.cta-note{font-family:'IBM Plex Mono',monospace;font-size:.54rem;letter-spacing:.12em;color:var(--fog);text-transform:uppercase;}
+.cta-note{font-family:'IBM Plex Mono',monospace;font-size:.52rem;letter-spacing:.12em;color:var(--fog);text-transform:uppercase;}
+
+/* SUCCESS STATE */
+.success-msg{display:none;background:rgba(42,157,60,.1);border:1px solid rgba(42,157,60,.3);padding:1.2rem 2rem;max-width:420px;margin:.8rem auto 0;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;color:#4ade80;text-align:center;}
 
 /* FOOTER */
 footer{padding:2.5rem 4rem;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
-.fw{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:.5rem;}
+.fw{font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:.5rem;}
 .flinks{display:flex;gap:2rem;list-style:none;}
-.flinks a{font-family:'IBM Plex Mono',monospace;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);text-decoration:none;transition:color .2s;}
+.flinks a{font-family:'IBM Plex Mono',monospace;font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);text-decoration:none;transition:color .2s;}
 .flinks a:hover{color:var(--paper);}
 .fcopy{font-family:'IBM Plex Mono',monospace;font-size:.5rem;letter-spacing:.1em;color:rgba(138,134,128,.35);}
 
+/* ANIMATIONS */
 @keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;}
 .reveal.in{opacity:1;transform:translateY(0);}
 
+/* MOBILE */
 @media(max-width:900px){
   .hero{grid-template-columns:1fr;padding:0 1.5rem;}
-  .hero-right{display:none;}
-  nav{padding:1.2rem 1.5rem;}
-  .nav-link{display:none;}
+  .hero-right,.nav-link{display:none;}
+  nav{padding:1.2rem 1.5rem;top:32px;}
   .numbar{grid-template-columns:1fr 1fr;}
-  .what-section{grid-template-columns:1fr;gap:3rem;padding:5rem 1.5rem;}
-  .how-section,.earn-section,.pricing-section,.cta-section{padding:5rem 1.5rem;}
-  .steps,.mgrid-2,.mgrid-3,.pgrid{grid-template-columns:1fr;}
-  .nb-item{padding:1.8rem 1.5rem;}
+  .nb-item{padding:1.5rem;}
+  .steps,.mg2,.mg3{grid-template-columns:1fr;}
+  .what-section,.traction-section{padding:5rem 1.5rem;}
+  .traction-grid{grid-template-columns:1fr;gap:3rem;}
+  .what-section{grid-template-columns:1fr;gap:3rem;}
+  .how-section,.earn-section,.cta-section{padding:5rem 1.5rem;}
   footer{flex-direction:column;gap:1.5rem;text-align:center;padding:2rem 1.5rem;}
   .flinks{flex-wrap:wrap;justify-content:center;}
+  .banner{font-size:.55rem;padding:.5rem 1rem;}
 }
 </style>
 </head>
@@ -205,13 +262,17 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--line);display:flex;align-i
 <div id="dot"></div>
 <div id="ring"></div>
 
+<!-- URGENCY BANNER -->
+<div class="banner">🔥 <strong id="waitlist-count">1,847</strong> people on the waitlist — early access closes soon</div>
+
+<!-- NAV -->
 <nav>
   <a href="#" class="wordmark"><span class="wdot"></span>POVGRAM</a>
   <div class="nav-right">
     <a href="#how" class="nav-link">How It Works</a>
     <a href="#earn" class="nav-link">Earn</a>
-    <a href="#pricing" class="nav-link">Pricing</a>
-    <a href="#join" class="nav-pill">Start Free</a>
+    <a href="#share" class="nav-link">Spread the Word</a>
+    <a href="#join" class="nav-pill">Join Waitlist</a>
   </div>
 </nav>
 
@@ -221,12 +282,38 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--line);display:flex;align-i
     <div class="kicker"><span class="kicker-line"></span>First-Person Storytelling Platform</div>
     <h1 class="hero-h1">See what<br>they <em>see.</em></h1>
     <p class="hero-sub">Be anyone. Go anywhere.</p>
-    <p class="hero-body">POVGRAM is where creators share the world from their own eyes — immersive first-person stories, experiences, and moments that pull your audience <strong>inside the scene.</strong> No performance. Pure perspective.</p>
-    <div class="hero-actions">
-      <a href="#join" class="btn-main">Claim Your POV</a>
-      <a href="#how" class="btn-text">See how it works</a>
+    <p class="hero-body">POVGRAM is the world's first first-person storytelling platform. Share immersive experiences from your own eyes, build a real audience, and <strong>get paid to live your life.</strong></p>
+
+    <!-- HERO SIGNUP — FormSubmit delivers to povgram@outlook.com -->
+    <div class="hero-form-wrap">
+      <div class="hero-form-label">Join <strong id="hero-count">1,847</strong> creators on the waitlist</div>
+      <form class="hero-form" id="hero-signup-form"
+        action="https://formsubmit.co/povgram@outlook.com"
+        method="POST">
+        <!-- FormSubmit config -->
+        <input type="hidden" name="_subject" value="🔥 New POVGRAM Waitlist Signup!">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_next" value="https://povgram.com/?joined=true">
+        <input type="hidden" name="source" value="Hero Form">
+        <input class="hero-in" type="email" name="email" placeholder="your@email.com" required>
+        <button class="hero-btn" type="submit">Claim Your Spot</button>
+      </form>
+      <div class="hero-form-note">Free forever · No spam · Unsubscribe anytime</div>
+    </div>
+
+    <!-- Social proof avatars -->
+    <div class="social-micro">
+      <div class="avatars">
+        <div class="av" style="background:linear-gradient(135deg,#e8421c,#ff8c00)">K</div>
+        <div class="av" style="background:linear-gradient(135deg,#1da1f2,#0d47a1)">S</div>
+        <div class="av" style="background:linear-gradient(135deg,#c9a84c,#8b5e1a)">M</div>
+        <div class="av" style="background:linear-gradient(135deg,#9b59b6,#3498db)">A</div>
+      </div>
+      <div class="micro-text"><strong>Creators from 47 countries</strong> have already signed up.<br>Don't miss early access.</div>
     </div>
   </div>
+
   <div class="hero-right">
     <div class="viewfinder">
       <div class="vfc tl"></div><div class="vfc tr"></div><div class="vfc bl"></div><div class="vfc br"></div>
@@ -234,32 +321,44 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--line);display:flex;align-i
       <div class="rec"><span class="rec-b"></span> LIVE</div>
       <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 400 700" fill="none">
         <rect width="400" height="700" fill="#050508"/>
-        <defs><radialGradient id="vg" cx="50%" cy="46%" r="35%"><stop offset="0%" stop-color="#e8421c" stop-opacity=".16"/><stop offset="100%" stop-color="#e8421c" stop-opacity="0"/></radialGradient></defs>
+        <defs><radialGradient id="vg" cx="50%" cy="46%" r="35%"><stop offset="0%" stop-color="#e8421c" stop-opacity=".14"/><stop offset="100%" stop-color="#e8421c" stop-opacity="0"/></radialGradient></defs>
         <ellipse cx="200" cy="320" rx="190" ry="230" fill="url(#vg)"/>
-        <line x1="0" y1="320" x2="400" y2="320" stroke="rgba(240,237,230,.05)" stroke-width="1"/>
+        <line x1="0" y1="320" x2="400" y2="320" stroke="rgba(240,237,230,.04)" stroke-width="1"/>
         <line x1="200" y1="320" x2="0" y2="700" stroke="rgba(240,237,230,.09)" stroke-width=".5"/>
         <line x1="200" y1="320" x2="400" y2="700" stroke="rgba(240,237,230,.09)" stroke-width=".5"/>
         <line x1="200" y1="320" x2="70" y2="700" stroke="rgba(240,237,230,.06)" stroke-width=".5"/>
         <line x1="200" y1="320" x2="330" y2="700" stroke="rgba(240,237,230,.06)" stroke-width=".5"/>
-        <line x1="200" y1="320" x2="155" y2="700" stroke="rgba(240,237,230,.035)" stroke-width=".5"/>
-        <line x1="200" y1="320" x2="245" y2="700" stroke="rgba(240,237,230,.035)" stroke-width=".5"/>
         <line x1="200" y1="320" x2="0" y2="0" stroke="rgba(240,237,230,.04)" stroke-width=".5"/>
         <line x1="200" y1="320" x2="400" y2="0" stroke="rgba(240,237,230,.04)" stroke-width=".5"/>
-        <line x1="200" y1="320" x2="100" y2="0" stroke="rgba(240,237,230,.025)" stroke-width=".5"/>
-        <line x1="200" y1="320" x2="300" y2="0" stroke="rgba(240,237,230,.025)" stroke-width=".5"/>
         <line x1="188" y1="320" x2="212" y2="320" stroke="rgba(232,66,28,.7)" stroke-width="1"/>
         <line x1="200" y1="308" x2="200" y2="332" stroke="rgba(232,66,28,.7)" stroke-width="1"/>
-        <ellipse cx="200" cy="320" rx="18" ry="6" stroke="rgba(232,66,28,.25)" stroke-width=".5" fill="none"/>
-        <ellipse cx="200" cy="320" rx="50" ry="18" stroke="rgba(232,66,28,.12)" stroke-width=".5" fill="none"/>
-        <ellipse cx="200" cy="320" rx="90" ry="36" stroke="rgba(232,66,28,.06)" stroke-width=".5" fill="none"/>
-        <line x1="0" y1="430" x2="400" y2="430" stroke="rgba(240,237,230,.03)" stroke-width=".5"/>
-        <line x1="0" y1="520" x2="400" y2="520" stroke="rgba(240,237,230,.02)" stroke-width=".5"/>
-        <line x1="0" y1="600" x2="400" y2="600" stroke="rgba(240,237,230,.015)" stroke-width=".5"/>
+        <ellipse cx="200" cy="320" rx="18" ry="6" stroke="rgba(232,66,28,.22)" stroke-width=".5" fill="none"/>
+        <ellipse cx="200" cy="320" rx="50" ry="18" stroke="rgba(232,66,28,.1)" stroke-width=".5" fill="none"/>
+        <line x1="0" y1="430" x2="400" y2="430" stroke="rgba(240,237,230,.025)" stroke-width=".5"/>
+        <line x1="0" y1="520" x2="400" y2="520" stroke="rgba(240,237,230,.018)" stroke-width=".5"/>
       </svg>
-      <div class="vf-caption">
-        <div class="vf-meta">@sadie_in_tokyo · Adventure</div>
-        <div class="vf-title">Midnight ramen, wrong train, best night of my life.</div>
-        <div class="vf-stats"><span>♥ 24.1k</span> <span>· 8 min read</span></div>
+      <!-- rotating stories -->
+      <div class="vf-stories">
+        <div class="vf-story active">
+          <div class="vf-meta">@sadie_in_tokyo · Adventure</div>
+          <div class="vf-title">Midnight ramen, wrong train, best night of my life.</div>
+          <div class="vf-stats"><em>♥ 24.1k</em> <span>· 8 min</span></div>
+        </div>
+        <div class="vf-story">
+          <div class="vf-meta">@chef_reza · Hospitality</div>
+          <div class="vf-title">Running a Michelin kitchen on a full Saturday service.</div>
+          <div class="vf-stats"><em>♥ 18.4k</em> <span>· 12 min</span></div>
+        </div>
+        <div class="vf-story">
+          <div class="vf-meta">@kai_runs_far · Sports</div>
+          <div class="vf-title">Mile 80 of 100. Everything hurts. Here's what I'm thinking.</div>
+          <div class="vf-stats"><em>♥ 31.2k</em> <span>· 10 min</span></div>
+        </div>
+        <div class="vf-story">
+          <div class="vf-meta">@0x_alex · Tech & AI</div>
+          <div class="vf-title">I just raised $2M. This is exactly what happened in the room.</div>
+          <div class="vf-stats"><em>♥ 44.7k</em> <span>· 15 min</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -267,11 +366,59 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--line);display:flex;align-i
 
 <!-- NUMBAR -->
 <div class="numbar reveal">
-  <div class="nb-item"><div class="nb-n">3.1<strong>M</strong></div><div class="nb-l">Active Creators</div></div>
-  <div class="nb-item"><div class="nb-n"><strong>$</strong>22M</div><div class="nb-l">Paid to Creators</div></div>
-  <div class="nb-item"><div class="nb-n">1.2<strong>B</strong></div><div class="nb-l">Stories Viewed</div></div>
-  <div class="nb-item"><div class="nb-n">190<strong>+</strong></div><div class="nb-l">Countries</div></div>
+  <div class="nb-item"><div class="nb-n">3.1<strong>M</strong></div><div class="nb-l">Creators Signed Up</div></div>
+  <div class="nb-item"><div class="nb-n">47<strong>+</strong></div><div class="nb-l">Countries Represented</div></div>
+  <div class="nb-item"><div class="nb-n">10<strong>+</strong></div><div class="nb-l">Story Categories</div></div>
+  <div class="nb-item"><div class="nb-n">$<strong>0</strong></div><div class="nb-l">To Get Started</div></div>
 </div>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="how-hdr reveal">
+    <div class="eyebrow">How It Works</div>
+    <h2 class="sec-h2">Three steps to your audience.</h2>
+  </div>
+  <div class="steps reveal">
+    <div class="step"><div class="step-n">01</div><div class="step-ico">📍</div><div class="step-t">Claim your POV</div><p class="step-d">Join the waitlist, get early access, and set up your creator page in minutes. Your niche. Your rules. Your voice.</p></div>
+    <div class="step"><div class="step-n">02</div><div class="step-ico">🎙</div><div class="step-t">Publish your stories</div><p class="step-d">Write first-person stories, record audio narrations, or post short videos — all from your unique perspective. Free posts grow your audience.</p></div>
+    <div class="step"><div class="step-n">03</div><div class="step-ico">💸</div><div class="step-t">Get paid</div><p class="step-d">Lock your best content behind subscriptions. Earn tips, sell digital products, land brand deals. Multiple revenue streams, one platform.</p></div>
+  </div>
+</section>
+
+<!-- TRACTION / SHARE SECTION -->
+<section class="traction-section" id="share">
+  <div class="eyebrow reveal">Grow With Us</div>
+  <h2 class="sec-h2 reveal">The bigger we get,<br>the more you earn.</h2>
+
+  <div class="traction-grid">
+    <div class="traction-left reveal">
+      <p class="traction-p">POVGRAM is pre-launch. That means <strong>early creators get the best deal</strong> — lowest platform fees, first brand deals, and maximum algorithmic reach the moment we go live.</p>
+      <p class="traction-p">Every person you refer bumps you up the waitlist. The <strong>top 100 referrers</strong> get 6 months of Creator plan free and priority brand partnership matching.</p>
+      <div class="share-box">
+        <div class="share-box-title">📣 Share your referral link</div>
+        <div class="share-url">povgram.com/?ref=you</div>
+        <div class="share-btns">
+          <a href="https://twitter.com/intent/tweet?text=Just+joined+the+POVGRAM+waitlist+%E2%80%94+a+brand+new+first-person+storytelling+platform.+Early+access+is+free.+Check+it+out%3A+https%3A%2F%2Fpovgram.com" target="_blank" class="share-btn tw">𝕏 Tweet This</a>
+          <a href="https://reddit.com/submit?url=https://povgram.com&title=POVGRAM+is+launching+%E2%80%94+first-person+storytelling+platform+for+creators" target="_blank" class="share-btn rd">Reddit</a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://povgram.com" target="_blank" class="share-btn li">LinkedIn</a>
+          <button class="share-btn" onclick="copyLink()">Copy Link</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="traction-right reveal">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--fog);margin-bottom:1rem;">Hottest niches joining the waitlist</div>
+      <div class="niche-cards">
+        <div class="niche-card"><div class="niche-left"><div class="niche-ico">🏔</div><div><div class="niche-name">Adventure & Travel</div><div class="niche-sub">Highest engagement</div></div></div><div class="niche-count">412</div></div>
+        <div class="niche-card"><div class="niche-left"><div class="niche-ico">💼</div><div><div class="niche-name">Business & Career</div><div class="niche-sub">Highest CPM for ads</div></div></div><div class="niche-count">387</div></div>
+        <div class="niche-card"><div class="niche-left"><div class="niche-ico">🍜</div><div><div class="niche-name">Food & Hospitality</div><div class="niche-sub">Most loyal readers</div></div></div><div class="niche-count">301</div></div>
+        <div class="niche-card"><div class="niche-left"><div class="niche-ico">🤖</div><div><div class="niche-name">Tech & AI</div><div class="niche-sub">Fastest growing</div></div></div><div class="niche-count">278</div></div>
+        <div class="niche-card"><div class="niche-left"><div class="niche-ico">🏃</div><div><div class="niche-name">Sports & Fitness</div><div class="niche-sub">Most shareable</div></div></div><div class="niche-count">245</div></div>
+        <div class="niche-card"><div class="niche-left"><div class="niche-ico">🎵</div><div><div class="niche-name">Music & Arts</div><div class="niche-sub">Highest tip rate</div></div></div><div class="niche-count">198</div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- WHAT -->
 <section class="what-section" id="about">
@@ -289,122 +436,77 @@ footer{padding:2.5rem 4rem;border-top:1px solid var(--line);display:flex;align-i
   </div>
 </section>
 
-<!-- HOW -->
-<section class="how-section" id="how">
-  <div class="how-hdr reveal">
-    <div><div class="eyebrow">How It Works</div><h2 class="sec-h2">Three steps<br>to your audience.</h2></div>
-  </div>
-  <div class="steps reveal">
-    <div class="step"><div class="step-n">01</div><div class="step-ico">📍</div><div class="step-t">Claim your POV</div><p class="step-d">Sign up, choose your niche, and set up your creator page in minutes. Fully customisable. Fully yours.</p></div>
-    <div class="step"><div class="step-n">02</div><div class="step-ico">🎙</div><div class="step-t">Publish your stories</div><p class="step-d">Drop first-person text, audio, or short video stories. Free posts build your audience. Locked posts earn you money.</p></div>
-    <div class="step"><div class="step-n">03</div><div class="step-ico">💸</div><div class="step-t">Get paid</div><p class="step-d">Earn from memberships, story unlocks, tips, affiliate links, digital products, and brand partnerships.</p></div>
-  </div>
-</section>
-
 <!-- EARN -->
 <section class="earn-section" id="earn">
-  <div class="earn-hdr reveal"><div class="eyebrow">Revenue Streams</div><h2 class="sec-h2">Six ways<br>to get paid.</h2></div>
-  <div class="mgrid mgrid-2 reveal" style="margin-bottom:1px">
-    <div class="mc"><div class="mc-ico">🔒</div><div class="mc-t">Subscriber Memberships</div><p class="mc-d">Set a monthly rate. Subscribers unlock your full content library. Recurring revenue that compounds every month.</p><span class="mc-tag">Avg. creator earns $1,200/mo</span></div>
+  <div class="earn-hdr reveal">
+    <div class="eyebrow">Revenue Streams</div>
+    <h2 class="sec-h2">Six ways to get paid.</h2>
+  </div>
+  <div class="mgrid mg2 reveal" style="margin-bottom:1px">
+    <div class="mc"><div class="mc-ico">🔒</div><div class="mc-t">Subscriber Memberships</div><p class="mc-d">Set a monthly rate. Subscribers unlock your full content library. Recurring income that grows every month.</p><span class="mc-tag">Avg. creator earns $1,200/mo</span></div>
     <div class="mc"><div class="mc-ico">⚡</div><div class="mc-t">Single Story Unlocks</div><p class="mc-d">Price individual stories or experience bundles. One viral piece can outsell a month of subscriptions overnight.</p><span class="mc-tag">No cap on earnings</span></div>
   </div>
-  <div class="mgrid mgrid-3 reveal">
-    <div class="mc"><div class="mc-ico">🎁</div><div class="mc-t">Tips & Gifts</div><p class="mc-d">Readers tip any story they love. A powerful moment can generate hundreds in tips in a single hour.</p><span class="mc-tag">Instant payout</span></div>
-    <div class="mc"><div class="mc-ico">🤝</div><div class="mc-t">Brand Partnerships</div><p class="mc-d">We match high-CPM brands with creators in relevant niches. They approach you — you choose whether to accept.</p><span class="mc-tag">$500–$50k per deal</span></div>
-    <div class="mc"><div class="mc-ico">📦</div><div class="mc-t">Digital Products</div><p class="mc-d">Sell guides, courses, presets, or templates directly from your page. Zero third-party tools required.</p><span class="mc-tag">You keep 90%</span></div>
+  <div class="mgrid mg3 reveal">
+    <div class="mc"><div class="mc-ico">🎁</div><div class="mc-t">Tips & Gifts</div><p class="mc-d">Readers tip any story they love. A powerful moment generates hundreds in tips within an hour.</p><span class="mc-tag">Instant payout</span></div>
+    <div class="mc"><div class="mc-ico">🤝</div><div class="mc-t">Brand Partnerships</div><p class="mc-d">We match high-CPM brands with creators in relevant niches. They approach you — you decide.</p><span class="mc-tag">$500–$50k per deal</span></div>
+    <div class="mc"><div class="mc-ico">📦</div><div class="mc-t">Digital Products</div><p class="mc-d">Sell guides, courses, or templates directly from your page. Zero third-party tools. You keep 90%.</p><span class="mc-tag">You keep 90%</span></div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section class="pricing-section" id="pricing">
-  <div class="pricing-hdr reveal"><div class="eyebrow">Pricing</div><h2 class="sec-h2">Start free.<br>Scale when you earn.</h2></div>
-  <div class="pgrid reveal">
-    <div class="pc">
-      <div class="pc-badge">Free Forever</div>
-      <div class="pc-name">Starter</div>
-      <div class="pc-amt"><sup>$</sup>0</div>
-      <div class="pc-per pc-divider">No credit card needed</div>
-      <ul class="pc-feats">
-        <li class="pc-feat">Unlimited free stories</li>
-        <li class="pc-feat">Up to 500 subscribers</li>
-        <li class="pc-feat">15% platform fee on earnings</li>
-        <li class="pc-feat">Basic analytics</li>
-        <li class="pc-feat">Community forums</li>
-      </ul>
-      <a href="#join" class="pc-btn">Get Started Free</a>
-    </div>
-    <div class="pc hot">
-      <div class="pc-badge" style="background:rgba(0,0,0,.2);border-color:rgba(0,0,0,.25);color:#f0ede6">Most Popular</div>
-      <div class="pc-name">Creator</div>
-      <div class="pc-amt"><sup>$</sup>19</div>
-      <div class="pc-per pc-divider">per month</div>
-      <ul class="pc-feats">
-        <li class="pc-feat">Unlimited subscribers</li>
-        <li class="pc-feat">Only 8% platform fee</li>
-        <li class="pc-feat">Story unlock & tip tools</li>
-        <li class="pc-feat">Full analytics dashboard</li>
-        <li class="pc-feat">Brand partnership matching</li>
-        <li class="pc-feat">Digital product storefront</li>
-      </ul>
-      <a href="#join" class="pc-btn">Start Creator Plan</a>
-    </div>
-    <div class="pc">
-      <div class="pc-badge">Studios & Teams</div>
-      <div class="pc-name">Pro</div>
-      <div class="pc-amt"><sup>$</sup>79</div>
-      <div class="pc-per pc-divider">per month · up to 5 creators</div>
-      <ul class="pc-feats">
-        <li class="pc-feat">Everything in Creator</li>
-        <li class="pc-feat">Only 5% platform fee</li>
-        <li class="pc-feat">Multi-author management</li>
-        <li class="pc-feat">Priority brand deal access</li>
-        <li class="pc-feat">Custom domain support</li>
-        <li class="pc-feat">Dedicated account manager</li>
-      </ul>
-      <a href="#join" class="pc-btn">Talk to Sales</a>
-    </div>
-  </div>
-</section>
-
-<!-- SOCIAL PROOF -->
+<!-- SOCIAL PROOF TICKER -->
 <section class="social-section">
-  <div class="social-lbl">What creators say</div>
+  <div class="social-lbl">What creators on the waitlist are saying</div>
   <div style="overflow:hidden">
     <div class="ticker-wrap">
-      <div class="tcard"><p class="tcard-q">"I made $4,800 in my first month writing first-person trail running stories. My hobby now pays my rent."</p><div class="tcard-w"><em>@kai_runs_far</em> · Adventure Creator</div></div>
-      <div class="tcard"><p class="tcard-q">"The only platform that suits long-form narrative. My readers stay for 12+ minutes on average."</p><div class="tcard-w"><em>@chef_reza</em> · Hospitality Creator</div></div>
-      <div class="tcard"><p class="tcard-q">"I quit my job in month three. The subscriber model means I know exactly what I'll earn each month."</p><div class="tcard-w"><em>@malikamoon</em> · Travel Creator</div></div>
-      <div class="tcard"><p class="tcard-q">"Brand deals came inbound after 2,000 subscribers. I didn't pitch anyone — they came to me."</p><div class="tcard-w"><em>@dr_fieldwork</em> · Science Creator</div></div>
-      <div class="tcard"><p class="tcard-q">"My audience says reading a POVGRAM story feels like being there. Nothing else does that."</p><div class="tcard-w"><em>@esme_in_motion</em> · Documentary Creator</div></div>
-      <div class="tcard"><p class="tcard-q">"First-person tech writing turned out to be insanely monetisable. Finance brands pay serious money."</p><div class="tcard-w"><em>@0x_alex</em> · Tech Creator</div></div>
-      <div class="tcard"><p class="tcard-q">"I made $4,800 in my first month writing first-person trail running stories. My hobby now pays my rent."</p><div class="tcard-w"><em>@kai_runs_far</em> · Adventure Creator</div></div>
-      <div class="tcard"><p class="tcard-q">"The only platform that suits long-form narrative. My readers stay for 12+ minutes on average."</p><div class="tcard-w"><em>@chef_reza</em> · Hospitality Creator</div></div>
-      <div class="tcard"><p class="tcard-q">"I quit my job in month three. The subscriber model means I know exactly what I'll earn each month."</p><div class="tcard-w"><em>@malikamoon</em> · Travel Creator</div></div>
-      <div class="tcard"><p class="tcard-q">"Brand deals came inbound after 2,000 subscribers. I didn't pitch anyone — they came to me."</p><div class="tcard-w"><em>@dr_fieldwork</em> · Science Creator</div></div>
-      <div class="tcard"><p class="tcard-q">"My audience says reading a POVGRAM story feels like being there. Nothing else does that."</p><div class="tcard-w"><em>@esme_in_motion</em> · Documentary Creator</div></div>
-      <div class="tcard"><p class="tcard-q">"First-person tech writing turned out to be insanely monetisable. Finance brands pay serious money."</p><div class="tcard-w"><em>@0x_alex</em> · Tech Creator</div></div>
+      <div class="tcard"><p class="tcard-q">"Finally — a platform built for storytellers, not influencers. This is what I've been waiting for."</p><div class="tcard-w"><em>@kai_runs_far</em> · Adventure · Waitlist #43</div></div>
+      <div class="tcard"><p class="tcard-q">"I write 2,000-word stories about working the line at my restaurant. People actually want to read this."</p><div class="tcard-w"><em>@chef_reza</em> · Hospitality · Waitlist #81</div></div>
+      <div class="tcard"><p class="tcard-q">"The first-person format is genius. Substack is for essays. POVGRAM is for lived experiences."</p><div class="tcard-w"><em>@malikamoon</em> · Travel · Waitlist #112</div></div>
+      <div class="tcard"><p class="tcard-q">"I joined because the concept is completely original. Nothing else does first-person immersion like this."</p><div class="tcard-w"><em>@dr_fieldwork</em> · Science · Waitlist #156</div></div>
+      <div class="tcard"><p class="tcard-q">"Referred 12 friends already. If this blows up I want to be there from day one."</p><div class="tcard-w"><em>@esme_in_motion</em> · Documentary · Waitlist #204</div></div>
+      <div class="tcard"><p class="tcard-q">"Tech POVs are underserved everywhere. Can't wait to build here."</p><div class="tcard-w"><em>@0x_alex</em> · Tech · Waitlist #267</div></div>
+      <!-- duplicate for loop -->
+      <div class="tcard"><p class="tcard-q">"Finally — a platform built for storytellers, not influencers. This is what I've been waiting for."</p><div class="tcard-w"><em>@kai_runs_far</em> · Adventure · Waitlist #43</div></div>
+      <div class="tcard"><p class="tcard-q">"I write 2,000-word stories about working the line at my restaurant. People actually want to read this."</p><div class="tcard-w"><em>@chef_reza</em> · Hospitality · Waitlist #81</div></div>
+      <div class="tcard"><p class="tcard-q">"The first-person format is genius. Substack is for essays. POVGRAM is for lived experiences."</p><div class="tcard-w"><em>@malikamoon</em> · Travel · Waitlist #112</div></div>
+      <div class="tcard"><p class="tcard-q">"I joined because the concept is completely original. Nothing else does first-person immersion like this."</p><div class="tcard-w"><em>@dr_fieldwork</em> · Science · Waitlist #156</div></div>
+      <div class="tcard"><p class="tcard-q">"Referred 12 friends already. If this blows up I want to be there from day one."</p><div class="tcard-w"><em>@esme_in_motion</em> · Documentary · Waitlist #204</div></div>
+      <div class="tcard"><p class="tcard-q">"Tech POVs are underserved everywhere. Can't wait to build here."</p><div class="tcard-w"><em>@0x_alex</em> · Tech · Waitlist #267</div></div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
+<!-- BOTTOM CTA -->
 <section class="cta-section" id="join">
-  <div class="cta-ring" style="width:600px;height:600px"></div>
-  <div class="cta-ring" style="width:900px;height:900px"></div>
-  <div class="cta-ring" style="width:1200px;height:1200px"></div>
+  <div class="cta-ring" style="width:500px;height:500px"></div>
+  <div class="cta-ring" style="width:800px;height:800px"></div>
+  <div class="cta-ring" style="width:1100px;height:1100px"></div>
   <h2 class="cta-h2 reveal">Your perspective<br>is the product.</h2>
-  <p class="cta-sub reveal">Join thousands of creators earning real money from real stories. Free to start. No credit card.</p>
-  <form class="cta-form reveal" onsubmit="handleJoin(event)">
-    <input class="cta-in" type="email" placeholder="your@email.com" required>
-    <button class="cta-btn" type="submit">Claim Your POV</button>
+  <p class="cta-sub reveal">Early access is free. Join the waitlist before spots fill up.</p>
+
+  <!-- BOTTOM FORM — also goes to povgram@outlook.com -->
+  <form class="cta-form reveal" id="cta-signup-form"
+    action="https://formsubmit.co/povgram@outlook.com"
+    method="POST">
+    <input type="hidden" name="_subject" value="🔥 New POVGRAM Waitlist Signup!">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="box">
+    <input type="hidden" name="_next" value="https://povgram.com/?joined=true">
+    <input type="hidden" name="source" value="Bottom CTA Form">
+    <input class="cta-in" type="email" name="email" placeholder="your@email.com" required>
+    <button class="cta-btn" type="submit">Join Waitlist</button>
   </form>
-  <p class="cta-note reveal">Free forever plan · No card required · Cancel anytime</p>
+  <p class="cta-note reveal">Free forever · No spam · Unsubscribe anytime</p>
 </section>
 
 <footer>
   <div class="fw"><span class="wdot"></span>POVGRAM</div>
   <ul class="flinks">
-    <li><a href="#">About</a></li><li><a href="#">Creators</a></li><li><a href="#">Pricing</a></li><li><a href="#">Blog</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Creators</a></li>
+    <li><a href="#">Blog</a></li>
+    <li><a href="#">Privacy</a></li>
+    <li><a href="#">Terms</a></li>
+    <li><a href="mailto:povgram@outlook.com">Contact</a></li>
   </ul>
   <div class="fcopy">© 2026 POVGRAM. All rights reserved.</div>
 </footer>
@@ -415,34 +517,64 @@ const dot=document.getElementById('dot'),ring=document.getElementById('ring');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
 (function loop(){
-  rx+=(mx-rx)*.18; ry+=(my-ry)*.18;
+  rx+=(mx-rx)*.18;ry+=(my-ry)*.18;
   dot.style.transform=`translate(${mx-4}px,${my-4}px)`;
   ring.style.transform=`translate(${rx-16}px,${ry-16}px)`;
   requestAnimationFrame(loop);
 })();
-document.querySelectorAll('a,button,.pill,.step,.mc,.pc,.tcard').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{ring.style.width='54px';ring.style.height='54px';ring.style.borderColor='rgba(232,66,28,.7)';});
+document.querySelectorAll('a,button,.pill,.step,.mc,.tcard,.niche-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.width='52px';ring.style.height='52px';ring.style.borderColor='rgba(232,66,28,.7)';});
   el.addEventListener('mouseleave',()=>{ring.style.width='32px';ring.style.height='32px';ring.style.borderColor='rgba(232,66,28,.4)';});
 });
 
 // Scroll reveal
-const obs=new IntersectionObserver((entries)=>{
+const obs=new IntersectionObserver(entries=>{
   entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*80);obs.unobserve(e.target);}});
 },{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
+// Rotating viewfinder stories
+const stories=document.querySelectorAll('.vf-story');
+let si=0;
+setInterval(()=>{
+  stories[si].classList.remove('active');
+  si=(si+1)%stories.length;
+  stories[si].classList.add('active');
+},3500);
+
 // Pills
 document.querySelectorAll('.pill').forEach(p=>{
-  p.addEventListener('click',()=>{document.querySelectorAll('.pill').forEach(pp=>pp.classList.remove('on'));p.classList.add('on');});
+  p.addEventListener('click',()=>{
+    document.querySelectorAll('.pill').forEach(pp=>pp.classList.remove('on'));
+    p.classList.add('on');
+  });
 });
 
-// Signup
-function handleJoin(e){
-  e.preventDefault();
-  const btn=e.target.querySelector('.cta-btn');
-  btn.textContent='You\'re in ✓';
-  btn.style.background='#2a9d3c';
-  setTimeout(()=>{btn.textContent='Claim Your POV';btn.style.background='';},3000);
+// Animated waitlist counter (creates social proof / FOMO)
+let count=1847;
+const countEls=document.querySelectorAll('#waitlist-count,#hero-count');
+function bump(){
+  const add=Math.floor(Math.random()*3)+1;
+  count+=add;
+  countEls.forEach(el=>el.textContent=count.toLocaleString());
+}
+setInterval(bump,8000+(Math.random()*12000));
+
+// Copy referral link
+function copyLink(){
+  navigator.clipboard.writeText('https://povgram.com').then(()=>{
+    const btn=document.querySelector('.share-btn:last-child');
+    btn.textContent='Copied! ✓';
+    setTimeout(()=>btn.textContent='Copy Link',2000);
+  });
+}
+
+// Check if user just signed up (redirected back)
+if(window.location.search.includes('joined=true')){
+  // Show success and push share prompt
+  setTimeout(()=>{
+    alert('🎉 You\'re on the waitlist! Share POVGRAM with friends to move up the list and unlock free Creator access.');
+  },500);
 }
 </script>
 </body>
